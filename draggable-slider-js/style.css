@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --height: 340px;
+  --gap: 14px;
+  --imgWidthL: calc((100% - 2 * var(--gap)) / 3);
+  --imgWidthM: calc((100% - var(--gap)) / 2);
+  --imgWidthS: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 35px;
+  min-height: 100vh;
+  background-color: #343f4f;
+}
+
+.wrapper {
+  position: relative;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+}
+
+/* Arrows back and forward start */
+.wrapper i {
+  position: absolute;
+  height: 46px;
+  width: 46px;
+  font-size: 1.2rem;
+  line-height: 46px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.wrapper i:first-child {
+  display: none; /* display: block after dragging starts */
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.wrapper i:last-child {
+  right: 0;
+  transform: translateX(50%);
+}
+/* Arrows back and forward end */
+
+/* Carousel start */
+.wrapper .carousel {
+  display: flex;
+  column-gap: var(--gap);
+  overflow: hidden;
+  cursor: pointer;
+  scroll-behavior: smooth;
+}
+
+.carousel.dragging {
+  scroll-behavior: auto; /* remove smooth scroll behavior */
+  cursor: grab;
+}
+
+.carousel.dragging img {
+  pointer-events: none;
+}
+
+.carousel img {
+  height: var(--height);
+  width: var(--imgWidthL);
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+/* Carousel end */
+
+@media screen and (max-width: 900px) {
+  .carousel img {
+    width: var(--imgWidthM);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .carousel img {
+    width: var(--imgWidthS);
+  }
+}
